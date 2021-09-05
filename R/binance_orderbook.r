@@ -29,7 +29,7 @@ binance_orderbook <- function(pair, limit, updatetime = 1)
 
   # get(obookname)
   # !!!!! global assignment
-  ws <<- websocket::WebsocketClient$new(wsschannel_url,
+  ws <<- websocket::WebSocket$new(wsschannel_url,
                             onOpen = function() {
                               cat("Connection opened\n")
                               cat("Type ws$close to close\n" )
@@ -107,7 +107,7 @@ binance_orderbook <- function(pair, limit, updatetime = 1)
                             onClose = function() {
                               cat("Client disconnected\n")
                             }
-                                        ) # definition of websocket::WebsocketClient$new finished
+                                        ) # definition of websocket::WebSocket$new finished
 
 
   if ( length(get(obookname, envir = .GlobalEnv)) == 0 )
